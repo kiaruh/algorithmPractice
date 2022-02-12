@@ -28,6 +28,7 @@ if(reverseWord === word) {
 
 // console.log(reverseWord)
 
+//#############################################################################
 // MAKING A STACK on my own
 
 var stack = function(){
