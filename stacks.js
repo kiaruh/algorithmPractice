@@ -5,9 +5,9 @@
 //palindrome
 var letters = [] // this is a stack
 
-var word = 'racecar'
+var word = 'racecar' 
 
-var reverseWord = ''
+var reverseWord = '' 
 
 // put letters in stack
 for (var i = 0; i < word.length; i++) {
@@ -27,6 +27,45 @@ if(reverseWord === word) {
 }
 
 // console.log(reverseWord)
+//Alternative way to reverse word
+
+const reverseWord2 = word => {
+    let splitWordArr = word.split('')//split it into an array
+    console.log(splitWordArr)
+    let reverseWordArr =  splitWordArr.reverse()//reverse it
+    console.log(reverseWordArr)
+    let reverseWord = reverseWordArr.join('')//join it back together
+    console.log(reverseWord)
+    return reverseWord
+}
+const isPalindrome2 = (word1, func) => {
+    if(func(word1) === word1) { //compare the two words
+        console.log('the word is a palindrome 2')
+    }else{  //if they are not the same
+        console.log('The word is not a palindrome 2')
+    }
+}
+
+console.log(isPalindrome2('reconocer', reverseWord2))
+
+//Alternative way to reverse word
+const reverseWord3 = word => {
+    let reverseWord = word.split('').reverse().join('')
+    return reverseWord
+}
+
+const isPalindrome3 = (word1, func) => {
+    if(func(word1) === word1) { //compare the two words
+        console.log(`the word is a palindrome 3 ${word1} == ${func(word1)}`)
+    }else{  //if they are not the same
+        console.log(`The word is not a palindrome 3 ${word1} != ${func(word1)}`)
+    }
+}
+
+console.log(isPalindrome3('atardecer', reverseWord2))
+
+//#############################################################################
+
 
 //#############################################################################
 // MAKING A STACK on my own
@@ -85,5 +124,3 @@ console.log(myStack.peek())
 console.log(myStack.pop())
 console.log(myStack.print())
 console.log(myStack.size())
-
-
