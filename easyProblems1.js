@@ -1,19 +1,18 @@
 //Two Sum algotithm
-var nums = [2, 1, 15, 7, 11, 15, 5]
+var nums = [2, 1, 15, 3, 11, 7]
 
 function twoSum(nums,target){
-    let preValue = {}
-    for(let i = 0; i < nums.length; i++){
-        let currentValue = nums[i]
-        let neededValue = target - currentValue
-        let index2 = preValue[neededValue]
-        if(index2!==undefined){
-            return [index2,i]
-        }else{
-            preValue[nums[i]] = i
-        }
-    }
-
+   const preNumber = {}
+   for(let i = 0; i < nums.length; i++){
+       const currentNumber = nums[i]
+       const neededNumber = target - currentNumber
+       const index = preNumber[neededNumber]
+       if(index!== undefined){
+           return [index,i]
+       }else{
+           preNumber[currentNumber] = i
+       }
+   }
 }
 
 console.log(twoSum(nums,9))
