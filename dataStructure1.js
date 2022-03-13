@@ -23,5 +23,7 @@ arr2.push(arr1)
 console.log(arr2)
 arr2.shift() // elimina el primer elemento
 arr2.unshift(arr3) // agrega al principio
-console.log(arr2)
+console.log(arr2) 
+delete arr2[arr2.length - 1] // elimina el ultimo elemento
+console.log(arr2);
 
