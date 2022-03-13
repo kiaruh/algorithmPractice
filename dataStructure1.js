@@ -15,7 +15,7 @@ let arreglo = [[1,2,3],[4,5,6],[7,8,9],10,11,12]
 // console.log(arreglo[2][0]) //7
 // console.log(arreglo[3]) //10
 
-//funciones de arreglos - push, pop, shift (elimina el primero), unshift (agrega al principio)
+//funciones de arreglos - push, pop, shift (elimina el primero), unshift (agrega al principio), splice (elimina y agrega)
 let arr1 = ['cat', 'dog', 'rabbit']
 let arr2 = ['red', 'blue', 'green']
 let arr3 = ['a', 'b', 'c']
@@ -25,5 +25,9 @@ arr2.shift() // elimina el primer elemento
 arr2.unshift(arr3) // agrega al principio
 console.log(arr2) 
 delete arr2[arr2.length - 1] // elimina el ultimo elemento
-console.log(arr2);
+console.log(arr2)
+arr1.splice(1,1) // elimina el elemento en la posicion 1 y 1 elemento (puedo elegir la cantidad de elementos que quiera)
+console.log(arr1)
+
+
 
