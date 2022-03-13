@@ -53,7 +53,13 @@ switch(dia){
     case 'wednesday':
         answer = 'today is Wednesday'
         break
+    default:
+        answer = 'today is not a day of the week'
+        break
     }
+
     return answer
 }
-console.log(diaSemana('tuesday'))
+// console.log(diaSemana('tuesday'))
+
+//
