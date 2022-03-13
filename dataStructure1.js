@@ -40,15 +40,20 @@ nextInLine(arr4, 'lala')
 // console.log(arr4)
 
 // switch case
-let day = 'tuesday'
-switch(day){
+
+function diaSemana(dia){
+let answer = ''
+switch(dia){
     case 'monday':
-        console.log('today is Monday')
+        answer = 'today is Monday'
         break
     case 'tuesday':
-        console.log('today is Tuesday')
+        answer = 'today is Tuesday'
         break
     case 'wednesday':
-        console.log('today is Wednesday')
+        answer = 'today is Wednesday'
         break
+    }
+    return answer
 }
+console.log(diaSemana('tuesday'))
