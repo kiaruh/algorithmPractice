@@ -33,8 +33,8 @@ let arreglo = [[1,2,3],[4,5,6],[7,8,9],10,11,12]
 //mantiene el arreglo en 5 elementos y cambie el primer elemento por una nueva palabra y lo devuelvo
 let arr4 = ['cat', 'dog', 'rabbit', 'mouse', 'horse']
 function nextInLine(arr, item) {
-    arr.push(item)
-    return arr.shift()
+    arr.push(item) //agrega el elemento al final del arreglo
+    return arr.shift() //elimina el primer elemento y lo devuelve
 }
 nextInLine(arr4, 'lala')
 console.log(arr4)
