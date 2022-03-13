@@ -57,9 +57,36 @@ switch(dia){
         answer = 'today is not a day of the week'
         break
     }
-
     return answer
 }
 // console.log(diaSemana('tuesday'))
+
+//otro switch case
+let nota = 7
+function notaFinal(nota){
+    let answer = ''
+    switch(nota){
+        case 1:
+        case 2:
+        case 3:{
+            answer = 'fail'
+            break
+        }
+        case 4:
+        case 5:
+        case 6:{
+            answer = 'pass'
+            break
+        }
+        case 7:
+        case 8:
+        case 9:{
+            answer = 'good'
+            break
+        }
+    }
+        return answer
+}
+// console.log(notaFinal(nota))
 
 //
