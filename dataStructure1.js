@@ -37,4 +37,18 @@ function nextInLine(arr, item) {
     return arr.shift() //elimina el primer elemento y lo devuelve
 }
 nextInLine(arr4, 'lala')
-console.log(arr4)
+// console.log(arr4)
+
+// switch case
+let day = 'tuesday'
+switch(day){
+    case 'monday':
+        console.log('today is Monday')
+        break
+    case 'tuesday':
+        console.log('today is Tuesday')
+        break
+    case 'wednesday':
+        console.log('today is Wednesday')
+        break
+}
