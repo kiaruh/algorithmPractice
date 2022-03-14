@@ -1,0 +1,8 @@
+- Big O(1) : push, pop 
+
+- Big 0(n): shif, unshift
+
+- Big O(n): forEach, map, filter, reduce, find, findIndex
+
+- Big O(n^2): forEach, map, filter, reduce, find, findIndex
+
