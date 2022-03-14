@@ -6,3 +6,5 @@
 
 - Big O(n^2): forEach, map, filter, reduce, find, findIndex
 
+Linked List: pointers to next node. Spread over memory.
+Arrays: fixed size. 
