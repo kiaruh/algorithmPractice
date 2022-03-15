@@ -8,11 +8,12 @@ function twoSum(nums,target){
        const neededNumber = target - currentNumber
        const index = preNumber[neededNumber]
        if(index!== undefined){
-           return [index,i]
+           return [index,i] //return true
        }else{
            preNumber[currentNumber] = i
        }
    }
+   return false
 }
 
 console.log(twoSum(nums,9))
