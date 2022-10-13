@@ -67,3 +67,4 @@ const numbers = [1,2,3,4,5,6,7,8,9,10,'Pedro']
 const includes = numbers.includes('Pedro')
 
 // console.log(includes)
+
