@@ -11,12 +11,21 @@ function repetirCaracteres() {
     // Por ej:
     // 'hola'.repeatCharacters() devuelve "hhoollaa"
     // Tu código aca:
-    Object.prototype
+    
   }
   
   // No modifiques nada debajo de esta linea //
+  String.prototype.repeatCharacters = function(){
+    let palabra = ''
+    for(let i = 0; i<this.length;i++){
+        palabra += this[i]
+        palabra += this[i]
+    }
+    return palabra
+}
+
+  let palabra1 = 'henry'
+  let palabra2 = 'hola'
   
-  module.exports = repetirCaracteres
-  
-  
-  console.log("henry".repetirCaracteres())
+  console.log(palabra1.repeatCharacters())
+  console.log(palabra2.repeatCharacters())
