@@ -13,9 +13,32 @@ function numeroSimetrico(num) {
   // numeroSimetrico(11711) devuelve true
 
   // Tu código:
+  let numString = JSON.stringify(num)
+  let counter = 0
+  let head = []
+  let tail = []
+  for(let i = 0; i<numString.length; i++){
+    head.push(numString[i])
+    tail.push(numString[numString.length-i-1])
+  }
 
+
+  for(let i = 0; i<numString.length;i++){
+    if(head[i]==tail[i]){
+      counter++
+    }
+  }
+  if(counter==numString.length){
+    return true
+  }
+  return false
 }
+
+
 
 // No modifiques nada debajo de esta linea //
 
-module.exports = numeroSimetrico
+console.log(numeroSimetrico(11711))
+console.log(numeroSimetrico(11712))
+console.log(numeroSimetrico(11713))
+console.log(numeroSimetrico(2225222))
