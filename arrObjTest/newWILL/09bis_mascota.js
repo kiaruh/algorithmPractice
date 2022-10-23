@@ -61,13 +61,20 @@ function crearClaseMascota() {
         // [{actividad: 'salir a caminar', frecuencia: '1 vez al dia'}, {actividad: 'baño', frecuencia: '1 vez al mes'}]
         // mascotas.getFrecuencia('baño') debería devolver '1 vez al mes'
         // Tu código aca:
-        var newFrecc = []
   
-        const freccuenci = this.actividades
-        freccuenci.forEach(i => {
-          newFrecc.push(i.frecuencia)
-        });
-        return newFrecc;
+        const accion = this.actividades
+
+        for(let i = 0; i<accion.length; i++){
+            if(accion[i].actividad==actividad){
+                return accion[i].frecuencia
+            }
+        }
+        return 'No hubo actividad'
+
+        // if(accion[actividad]){
+        //     return accion
+        // }
+        
       }
   
   
@@ -82,16 +89,17 @@ function crearClaseMascota() {
   let Mascota = crearClaseMascota();
   let mascota = new Mascota("LALLALA",{ nombre: "Molly", apellido: "pepe" },[{ actividad: "salir a caminar", frecuencia: "1 vez al dia" },{ actividad: "baño", frecuencia: "1 vez al mes" },])
   
-  mascota.addActividad('correr','22222')
-  mascota.addActividad('corrersss','22222ssss')
-  mascota.addActividad('AAAAAAs','AAAA')
+  mascota.addActividad('correr','10 veces por día')
+  mascota.addActividad('baño','2 veces al mes')
+  mascota.addActividad('dormir','1 vez por año')
   
   
   
   // console.log(mascota.getDueño())
   // console.log(mascota.getNombre())
   // console.log(mascota.getActividades())
-  console.log(mascota.getFrecuencia())
+  console.log(mascota.getFrecuencia('correr'))
+  console.log(mascota.getFrecuencia('comer'))
   
   
         // let arr = [] 
