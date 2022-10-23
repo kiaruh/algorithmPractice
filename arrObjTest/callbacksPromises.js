@@ -23,7 +23,7 @@ syncWithCallback(1,3, (msg)=> console.log(msg))
 
 //promises -> asyncrono
 
-const asyncWithPromise = (num1,num2) => {
+const asyncWithPromise =(num1,num2) => {
     const resultado = num1+num2
     return new Promise(resolve=> { // tmb se puede poner (resolve,reject) => { }
         setTimeout(()=>{
@@ -35,3 +35,25 @@ const asyncWithPromise = (num1,num2) => {
 }
 
 asyncWithPromise(1,3).then(result=>console.log(result))
+
+// const resultadoAwait = await asyncWithPromise(2,5)
+
+// console.log(resultadoAwait)
+
+
+function resolveAfter2Seconds() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve('resolved');
+      }, 2000);
+    });
+  }
+  
+  async function asyncCall() {
+    console.log('calling');
+    const result = await resolveAfter2Seconds();
+    console.log(result);
+    // expected output: "resolved"
+  }
+  
+  asyncCall();
