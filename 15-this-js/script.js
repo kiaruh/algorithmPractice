@@ -103,14 +103,122 @@ const harry = {
 
 // sacha.saludar() //hola, me llamo Sacha & Uncaught TypeError: this is undefined || SOLUCION: hola, me llamo Sacha & seguime en Twitter: @sachalifs
 
-// PARTE 5 - Explicit Binding
+// PARTE 5 - EXPLICIT BINDING (bind, call y apply)
+
+// const sacha = {
+//     nombre: 'Sacha',
+//     saludar: function (){
+//         console.log(`Hola, me llamo ${this.nombre}!`) 
+//     }
+// }
+
 
 const sacha = {
     nombre: 'Sacha',
-    saludar: function (){
-        console.log(`Hola, me llamo ${this.nombre}!`) 
+
+    // saludar: function (gritando, conDespedida){
+    //     const saludoNormal = `Hola, me llamo ${this.nombre}!`
+    //     const despedidaNormal = 'Chau!'
+       
+    //    const saludo = gritando ? saludoNormal.toUpperCase() : saludoNormal
+    //     const despedida = gritando ? despedidaNormal.toUpperCase() : despedidaNormal
+
+    //     console.log(saludo)
+
+    //     if(conDespedida){
+    //         console.log(despedida)
+    //    }
+    // }
+
+    saludar: function () {
+        console.log(`Hola, me llamo ${this.nombre}!`)
     }
 }
-//MIN 16:28 MAS TARDE SIGO
+
+// sacha.saludar(true,true) //HOLA, ME LLAMO SACHA! & CHAU!
+const pepe = { nombre: 'Pepe'}
+// pepe.saludar = sacha.saludar //pero esto no lo queres hacer asi (opcion valida)
+// sacha.saludar.call(pepe,true, true) //el metodo se ejecuta sobre el objeto q le pasamos 
+// sacha.saludar.apply(pepe,[true,true]) // lo mismo que call pero los argumentos se pasan dentro de un array -> HOLA, ME LLAMO PEPE! & CHAU!
+
+const boton = document.getElementById('miBoton')
+// boton.addEventListener('click',sacha.saludar.call(sacha)) //Hola, me llamo Sacha! -> call y apply invocan el mensaje en el momento
+
+//ACA VIENE BIND 🥳🥳 -> metodo que retorna una nueva funcion con el contexto enlazado al objeto que le digamos Function.prototype.bind
+// boton.addEventListener('click',sacha.saludar.bind(sacha)) //Hola, me llamo Sacha!
+boton.addEventListener('click',sacha.saludar.bind(pepe)) //Bonus track -> Hola, me llamo Pepe!
+
+//UNA FUNCION QUE FUE CREADA CON BIND NO PUEDE VOLVER A SER ENLAZADA A OTRO OBJETO (Enlazamiento fuerte) **CURRYING
+
+//PARTE 6 - NEW BINDING (instanciar objetos)
+
+// function Persona(nombre){
+//     this.nombre = nombre
+// }
+
+// const otroSacha = new Persona('Sacha') // si ya se q no es el mismo, ya hay muchos const sacha, sorry not sorry
+
+
+//PARTE 7 - LEXICAL BINDING -> se produce cuando escribimos funciones con arrow function
+
+const otroSacha2 = { //Lexical binding se resuelve el problema que teniamos con default binding
+    nombre: 'Sacha',
+    twitter: '@sachalifs',
+    saludar: function (){
+        const seguimeEnTwitter = () => {
+            console.log(`seguime en Twitter: ${this.twitter}`) //las => functions se ejecutan en el mismo contexto que fueron creadas, enlazamiento fuerte tmb
+        }
+
+        console.log(`hola, me llamo ${this.nombre}`)
+        seguimeEnTwitter()
+    }
+}
+
+otroSacha2.saludar() //hola, me llamo Sacha & seguime en Twitter: @sachalifs
+
+//ERRORES COMUNES
+
+
+const otroSacha3 = { 
+    nombre: 'Sacha',
+    twitter: '@sachalifs',
+    saludar:  () => { //va a quedar enlazada en el contexto global de this q es el objeto window
+        const seguimeEnTwitter = () => {
+            console.log(`seguime en Twitter: ${this.twitter}`) 
+        }
+
+        console.log(`hola, me llamo ${this.nombre}`)
+        seguimeEnTwitter()
+    }
+}
+
+otroSacha3.saludar() // hola, me llamo undefined & seguime en Twitter: undefined
+
+// class Persona2 { //CUANDO USAMOS CLASES ES5 los metodos de instacia no estan fuertemente enlazados a los objetos que creemos
+//     constructor(nombre){
+//         this.nombre = nombre
+//         this.saludar = this.saludar.bind(this) //enlazar fuertemente los metodos de instancia
+//     }
+
+//     saludar() {
+//         console.log(`Hola, me llamo ${this.nombre}!`)
+//     }
+// }
+
+class Persona2 { //Se puede logar lo mismo con => function
+    constructor(nombre){
+        this.nombre = nombre
+    }
+
+    saludar = () => {
+        console.log(`Hola, me llamo ${this.nombre}!`) //no hay q usar bind en el constructor
+    }
+}
+
+const otroSacha4 = new Persona2('Pepito') //Basta de Sachas jaja
+
+otroSacha4.saludar() //Hola, me llamo Pepito!
+
+//EN QUE CONTEXTO SE ESTA EJECUTANDO == QUE VALOR TIENE THIS
 
 
