@@ -131,12 +131,12 @@ const sacha = {
     // }
 
     saludar: function () {
-        console.log(`Hola, me llamo ${this.nombre}!`)
+        console.log(`Hola, me llamo ${this.nombre}! soy ing agronomo`)
     }
 }
 
 // sacha.saludar(true,true) //HOLA, ME LLAMO SACHA! & CHAU!
-const pepe = { nombre: 'Pepe'}
+const pepe = { nombre: 'Mati'}
 // pepe.saludar = sacha.saludar //pero esto no lo queres hacer asi (opcion valida)
 // sacha.saludar.call(pepe,true, true) //el metodo se ejecuta sobre el objeto q le pasamos 
 // sacha.saludar.apply(pepe,[true,true]) // lo mismo que call pero los argumentos se pasan dentro de un array -> HOLA, ME LLAMO PEPE! & CHAU!
