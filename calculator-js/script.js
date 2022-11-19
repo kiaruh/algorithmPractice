@@ -58,16 +58,16 @@ class Calculator{
 
     getDisplayNumber(number) {
         const stringNumber = number.toString()
-        const inteferDigits = parseFloat(stringNumber.split(',')[0])
-        const decimalDigits = stringNumber.split(',')[1]
+        const inteferDigits = parseFloat(stringNumber.split('.')[0])
+        const decimalDigits = stringNumber.split('.')[1]
         let integerDisplay
         if(isNaN(inteferDigits)){
             integerDisplay = ''
         }else{
-            integerDisplay = inteferDigits.toLocaleString('es',{maximumFractionDigits:0})
+            integerDisplay = inteferDigits.toLocaleString('en',{maximumFractionDigits:0})
         }
         if(decimalDigits !=null){
-            return `${integerDisplay},${decimalDigits}`
+            return `${integerDisplay}.${decimalDigits}`
         }else {
             return integerDisplay
         }
