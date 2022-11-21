@@ -12,7 +12,7 @@ async function getData(){
         xs.push(year)
         ys.push(parseFloat(temp) + 14)
         
-        console.log(year, temp)
+        //console.log(year, temp)
     })
     return {xs, ys}
 }
@@ -42,6 +42,8 @@ async function chartIt(){
       })
 }
 
+
+//the CSV FILE LOCATED: https://data.giss.nasa.gov/gistemp/
 chartIt()
 
 
