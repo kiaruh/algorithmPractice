@@ -13,6 +13,14 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
 
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+
     <title>🛰️</title>
 </head>
 <body>
@@ -21,7 +29,44 @@
 
     <canvas id="myChart" width="700px" height="500px"></canvas>
 
-    
+    <h1>Where is the ISS: </h1>
+    <ul>
+        <li>lat: <span id="lat"></span>°</li>
+        <li>lon: <span id="lon"></span>°</li>
+   </ul>
       
+   <div id="map"></div>
+
 </body>
+
+<script>
+    const map = L.map('map').setView([51.505, -0.09], 13)
+
+    const api_url = 'https://api.wheretheiss.at/v1/satellites/25544'
+    
+    async function getGeoData(){
+        const response = await fetch(api_url)
+        const parsedData = await response.json()
+        const { latitude, longitude } = parsedData
+        
+        const lat = document.getElementById('lat')
+        const lon = document.getElementById('lon')
+    
+        lat.innerText =latitude
+        lon.innerText = longitude
+    
+        return { latitude, longitude }
+    }
+    
+    // getGeoData().then(data => console.log(data.latitude,data.longitude)) //showing the data
+    // getGeoData()
+    
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+    
+    
+    
+</script>
 </html>
