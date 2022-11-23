@@ -42,38 +42,36 @@
 <script>
 //https://leafletjs.com/examples/quick-start/ //website
 
-    
-
     const api_url = 'https://api.wheretheiss.at/v1/satellites/25544'
-    
-    const geoData = []
 
     async function getGeoData(){
         const response = await fetch(api_url)
         const parsedData = await response.json()
         const { latitude, longitude } = parsedData
 
-        const map = L.map('map').setView([0, 0], 5)
-        L.marker([0, 0]).addTo(map)
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map)
-
-        const myIcon = L.icon({
-        iconUrl: 'satelite.svg',
-        iconSize: [38, 95],
-        iconAnchor: [25, 16]
-        })
-        
         const lat = document.getElementById('lat')
         const lon = document.getElementById('lon')
     
         lat.innerText = latitude
         lon.innerText = longitude
 
-        setLatLng(latitude,longitude)
-        L.marker([latitude, longitude],{icon: myIcon} ).addTo(map)
+        const map = L.map('map').setView([0, 0],6)
+        const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 10,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map)
+
+        const myIcon = L.icon({
+        iconUrl: 'satellite.svg',
+        iconSize: [38, 95],
+        iconAnchor: [25, 16]
+        })
+        
+        const marker = L.marker([0, 0],{icon: myIcon} ).addTo(map)
+
+        marker.setLatLng([latitude,longitude])
+        map.setView([latitude,longitude])
+        
     
         return { latitude, longitude }
     }
