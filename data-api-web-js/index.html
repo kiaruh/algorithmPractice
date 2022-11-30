@@ -21,23 +21,34 @@
     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
     crossorigin=""/>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500&family=Roboto:wght@100;300;400;700;900&family=Sono&display=swap" rel="stylesheet"> 
+
     <title>🛰️</title>
 </head>
-<body>
-
+<header>
     <img src="" id="homer" width="250px">
-
-    <canvas id="myChart" width="700px" height="500px"></canvas>
-
+</header>
+<body>
+<section>
+<div class="chart"><canvas id="myChart"></canvas> </div>
     
-    <h1>Where is the ISS: </h1>
+
+<div class="iss"> 
+    <div class="iss-title">
+        <h1>ISS realtime position: </h1>
     <ul>
         <li>lat: <span id="lat"></span>°</li>
         <li>lon: <span id="lon"></span>°</li>
    </ul>
+    </div>   
+    
       
    <div id="map"></div>
+</div>
 
+</section>
 </body>
 
 <script>
