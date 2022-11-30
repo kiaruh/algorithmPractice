@@ -29,13 +29,8 @@
 
     <canvas id="myChart" width="700px" height="500px"></canvas>
 
-    <h1>Where is the ISS: </h1>
-    <ul>
-        <li>lat: <span id="lat"></span>°</li>
-        <li>lon: <span id="lon"></span>°</li>
-   </ul>
-      
-   <div id="map"></div>
+    
+
 
 </body>
 
@@ -44,19 +39,7 @@
 
     const api_url = 'https://api.wheretheiss.at/v1/satellites/25544'
 
-    async function getGeoData(){
-        const response = await fetch(api_url)
-        const parsedData = await response.json()
-        const { latitude, longitude } = parsedData
-
-        const lat = document.getElementById('lat')
-        const lon = document.getElementById('lon')
-    
-        lat.innerText = latitude
-        lon.innerText = longitude
-
-
-        const map = L.map('map').setView([0, 0],8)
+    const map = L.map('map').setView([0, 0],5)
         const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map)
@@ -69,8 +52,20 @@
         
         const marker = L.marker([0, 0],{icon: myIcon} ).addTo(map)
 
+    async function getGeoData(){
+        const response = await fetch(api_url)
+        const parsedData = await response.json()
+        const { latitude, longitude } = parsedData
+
+        const lat = document.getElementById('lat')
+        const lon = document.getElementById('lon')
+    
+        lat.innerText = latitude
+        lon.innerText = longitude
+
         marker.setLatLng([latitude,longitude])
-        map.setView([latitude,longitude]).addTo(map)
+
+        map.setView([latitude,longitude])
         
     
         // return { latitude, longitude }
@@ -83,4 +78,5 @@
     setInterval(getGeoData, 1500)
      
 </script>
+
 </html>
